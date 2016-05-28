@@ -4,7 +4,7 @@
 #
 Name     : R-xml2
 Version  : 0.1.2
-Release  : 15
+Release  : 16
 URL      : http://cran.r-project.org/src/contrib/xml2_0.1.2.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/xml2_0.1.2.tar.gz
 Summary  : Parse XML
@@ -13,12 +13,18 @@ License  : GPL-2.0+
 Requires: R-xml2-lib
 Requires: R-BH
 Requires: R-Rcpp
-Requires: R-testthat
+Requires: R-R6
 Requires: R-crayon
+Requires: R-memoise
+Requires: R-digest
+Requires: R-magrittr
 BuildRequires : R-BH
+BuildRequires : R-R6
 BuildRequires : R-Rcpp
 BuildRequires : R-crayon
-BuildRequires : R-testthat
+BuildRequires : R-digest
+BuildRequires : R-magrittr
+BuildRequires : R-memoise
 BuildRequires : clr-R-helpers
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : xz-dev
@@ -55,6 +61,7 @@ mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library xml2
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
