@@ -4,7 +4,7 @@
 #
 Name     : R-xml2
 Version  : 0.1.2
-Release  : 14
+Release  : 15
 URL      : http://cran.r-project.org/src/contrib/xml2_0.1.2.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/xml2_0.1.2.tar.gz
 Summary  : Parse XML
@@ -14,11 +14,14 @@ Requires: R-xml2-lib
 Requires: R-BH
 Requires: R-Rcpp
 Requires: R-testthat
+Requires: R-crayon
 BuildRequires : R-BH
 BuildRequires : R-Rcpp
+BuildRequires : R-crayon
 BuildRequires : R-testthat
 BuildRequires : clr-R-helpers
 BuildRequires : pkgconfig(libxml-2.0)
+BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
@@ -41,8 +44,10 @@ lib components for the R-xml2 package.
 %install
 rm -rf %{buildroot}
 export LANG=C
-export CFLAGS="$CFLAGS -O3 -flto -ffunction-sections -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -flto -ffunction-sections -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
