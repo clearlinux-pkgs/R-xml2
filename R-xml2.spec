@@ -4,7 +4,7 @@
 #
 Name     : R-xml2
 Version  : 1.0.0
-Release  : 19
+Release  : 20
 URL      : http://cran.r-project.org/src/contrib/xml2_1.0.0.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/xml2_1.0.0.tar.gz
 Summary  : Parse XML
