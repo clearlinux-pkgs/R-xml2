@@ -4,7 +4,7 @@
 #
 Name     : R-xml2
 Version  : 1.1.1
-Release  : 24
+Release  : 25
 URL      : http://cran.r-project.org/src/contrib/xml2_1.1.1.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/xml2_1.1.1.tar.gz
 Summary  : Parse XML
@@ -38,12 +38,15 @@ lib components for the R-xml2 package.
 %setup -q -c -n xml2
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1487769965
+export SOURCE_DATE_EPOCH=1492798613
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1487769965
+export SOURCE_DATE_EPOCH=1492798613
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -59,7 +62,7 @@ R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library xml2
 
@@ -69,6 +72,7 @@ R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/lib
 /usr/lib64/R/library/xml2/DESCRIPTION
 /usr/lib64/R/library/xml2/INDEX
 /usr/lib64/R/library/xml2/Meta/Rd.rds
+/usr/lib64/R/library/xml2/Meta/features.rds
 /usr/lib64/R/library/xml2/Meta/hsearch.rds
 /usr/lib64/R/library/xml2/Meta/links.rds
 /usr/lib64/R/library/xml2/Meta/nsInfo.rds
