@@ -4,7 +4,7 @@
 #
 Name     : R-xml2
 Version  : 1.2.0
-Release  : 34
+Release  : 35
 URL      : https://cran.r-project.org/src/contrib/xml2_1.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xml2_1.2.0.tar.gz
 Summary  : Parse XML
@@ -13,8 +13,10 @@ License  : GPL-2.0+
 Requires: R-xml2-lib
 Requires: R-Rcpp
 Requires: R-curl
+Requires: R-evaluate
 BuildRequires : R-Rcpp
 BuildRequires : R-curl
+BuildRequires : R-evaluate
 BuildRequires : clr-R-helpers
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : xz-dev
@@ -39,11 +41,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516828212
+export SOURCE_DATE_EPOCH=1517515909
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1516828212
+export SOURCE_DATE_EPOCH=1517515909
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
