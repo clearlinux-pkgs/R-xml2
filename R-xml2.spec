@@ -120,4 +120,4 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/xml2/libs/xml2.so
 /usr/lib64/R/library/xml2/libs/xml2.so.avx2
-/usr/lib64/R/library/xml2/libs/xml2.so.avx512
+%exclude /usr/lib64/R/library/xml2/libs/xml2.so.avx512
