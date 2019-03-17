@@ -4,24 +4,31 @@
 #
 Name     : R-xml2
 Version  : 1.2.0
-Release  : 58
+Release  : 59
 URL      : https://cran.r-project.org/src/contrib/xml2_1.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xml2_1.2.0.tar.gz
 Summary  : Parse XML
 Group    : Development/Tools
 License  : GPL-2.0+
-Requires: R-xml2-lib
+Requires: R-xml2-lib = %{version}-%{release}
 Requires: R-Rcpp
+Requires: R-assertthat
 Requires: R-curl
+Requires: R-markdown
 BuildRequires : R-Rcpp
+BuildRequires : R-assertthat
 BuildRequires : R-curl
-BuildRequires : clr-R-helpers
+BuildRequires : R-markdown
+BuildRequires : buildreq-R
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
-top of the 'libxml2' C library.
+# xml2
+[![Build Status](https://travis-ci.org/r-lib/xml2.svg?branch=master)](https://travis-ci.org/r-lib/xml2)
+[![Coverage Status](https://img.shields.io/codecov/c/github/r-lib/xml2/master.svg)](https://codecov.io/github/r-lib/xml2?branch=master)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/r-lib/xml2?branch=master&svg=true)](https://ci.appveyor.com/project/r-lib/xml2)
 
 %package lib
 Summary: lib components for the R-xml2 package.
@@ -39,11 +46,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1524277866
+export SOURCE_DATE_EPOCH=1552804733
 
 %install
+export SOURCE_DATE_EPOCH=1552804733
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1524277866
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -61,9 +68,9 @@ echo "FFLAGS = $FFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 echo "CXXFLAGS = $CXXFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library xml2
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx2 ; mv $i.avx2 ~/.stash/; done
-echo "CFLAGS = $CFLAGS -march=skylake -ftree-vectorize " > ~/.R/Makevars
-echo "FFLAGS = $FFLAGS -march=skylake -ftree-vectorize " >> ~/.R/Makevars
-echo "CXXFLAGS = $CXXFLAGS -march=skylake -ftree-vectorize " >> ~/.R/Makevars
+echo "CFLAGS = $CFLAGS -march=skylake-avx512 -ftree-vectorize " > ~/.R/Makevars
+echo "FFLAGS = $FFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
+echo "CXXFLAGS = $CXXFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --preclean --install-tests --no-test-load --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library xml2
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx512 ; mv $i.avx512 ~/.stash/; done
 echo "CFLAGS = $CFLAGS -ftree-vectorize " > ~/.R/Makevars
@@ -78,8 +85,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library xml2|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  xml2 || :
 
 
 %files
@@ -114,10 +120,42 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/xml2/html/00Index.html
 /usr/lib64/R/library/xml2/html/R.css
 /usr/lib64/R/library/xml2/include/xml2_types.h
-/usr/lib64/R/library/xml2/libs/symbols.rds
+/usr/lib64/R/library/xml2/tests/testthat.R
+/usr/lib64/R/library/xml2/tests/testthat/helper-version.R
+/usr/lib64/R/library/xml2/tests/testthat/lego.html.bz2
+/usr/lib64/R/library/xml2/tests/testthat/ns-multiple-aliases.xml
+/usr/lib64/R/library/xml2/tests/testthat/ns-multiple-default.xml
+/usr/lib64/R/library/xml2/tests/testthat/ns-multiple-prefix.xml
+/usr/lib64/R/library/xml2/tests/testthat/ns-multiple.xml
+/usr/lib64/R/library/xml2/tests/testthat/output/html_structure.txt
+/usr/lib64/R/library/xml2/tests/testthat/output/print-xml_document.txt
+/usr/lib64/R/library/xml2/tests/testthat/output/print-xml_node.txt
+/usr/lib64/R/library/xml2/tests/testthat/output/print-xml_nodeset.txt
+/usr/lib64/R/library/xml2/tests/testthat/test-as_list.R
+/usr/lib64/R/library/xml2/tests/testthat/test-as_xml_document.R
+/usr/lib64/R/library/xml2/tests/testthat/test-cdata.R
+/usr/lib64/R/library/xml2/tests/testthat/test-comment.R
+/usr/lib64/R/library/xml2/tests/testthat/test-dtd.R
+/usr/lib64/R/library/xml2/tests/testthat/test-format.R
+/usr/lib64/R/library/xml2/tests/testthat/test-modify-xml.R
+/usr/lib64/R/library/xml2/tests/testthat/test-namespaces.R
+/usr/lib64/R/library/xml2/tests/testthat/test-null.R
+/usr/lib64/R/library/xml2/tests/testthat/test-print.R
+/usr/lib64/R/library/xml2/tests/testthat/test-read-xml.R
+/usr/lib64/R/library/xml2/tests/testthat/test-url.R
+/usr/lib64/R/library/xml2/tests/testthat/test-write_xml.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_attrs.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_children.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_find.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_missing.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_name.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_nodeset.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_schema.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_serialize.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_structure.R
+/usr/lib64/R/library/xml2/tests/testthat/test-xml_text.R
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/xml2/libs/xml2.so
 /usr/lib64/R/library/xml2/libs/xml2.so.avx2
-%exclude /usr/lib64/R/library/xml2/libs/xml2.so.avx512
