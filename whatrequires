@@ -4,6 +4,8 @@ R-Ecfun
 R-RNeXML
 R-bold
 R-commonmark
+R-httr
+R-natserv
 R-pkgdown
 R-rversions
 R-rvest
