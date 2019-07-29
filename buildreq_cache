@@ -1,6 +1,7 @@
-1.2.0
+1.2.1
 R-Rcpp
 R-assertthat
 R-curl
+R-httr
 R-markdown
 R-rlang
