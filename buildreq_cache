@@ -1,7 +1,8 @@
-1.2.1
+1.2.2
 R-Rcpp
 R-assertthat
 R-curl
 R-httr
 R-markdown
 R-rlang
+R-stringi
