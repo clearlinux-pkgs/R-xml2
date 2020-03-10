@@ -1,17 +1,15 @@
 # This file contains recursive sources that require this package
 R-DBI
-R-Ecdat
 R-Ecfun
 R-RNeXML
-R-adephylo
 R-bold
 R-commonmark
 R-httr
+R-languageserver
+R-lintr
 R-natserv
-R-phylobase
 R-pkgdown
 R-readODS
-R-ritis
 R-roxygen2
 R-rversions
 R-rvest
@@ -21,5 +19,4 @@ R-spelling
 R-taxize
 R-tidyverse
 R-tm
-R-topicmodels
 R-wikitaxa
