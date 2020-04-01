@@ -11,6 +11,7 @@ R-natserv
 R-pkgdown
 R-readODS
 R-roxygen2
+R-rsample
 R-rversions
 R-rvest
 R-selectr
