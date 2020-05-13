@@ -4,28 +4,20 @@
 #
 Name     : R-xml2
 Version  : 1.3.2
-Release  : 76
+Release  : 77
 URL      : https://cran.r-project.org/src/contrib/xml2_1.3.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xml2_1.3.2.tar.gz
 Summary  : Parse XML
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-xml2-lib = %{version}-%{release}
-Requires: R-curl
-Requires: R-httr
-BuildRequires : R-curl
-BuildRequires : R-httr
 BuildRequires : buildreq-R
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
-# xml2
-<!-- badges: start -->
-[![R build status](https://github.com/r-lib/xml2/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/xml2/actions)
-[![Coverage Status](https://img.shields.io/codecov/c/github/r-lib/xml2/master.svg)](https://codecov.io/github/r-lib/xml2?branch=master)
-<!-- badges: end -->
+interface. Built on top of the 'libxml2' C library.
 
 %package lib
 Summary: lib components for the R-xml2 package.
@@ -37,21 +29,22 @@ lib components for the R-xml2 package.
 
 %prep
 %setup -q -c -n xml2
+cd %{_builddir}/xml2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587696150
+export SOURCE_DATE_EPOCH=1589408715
 
 %install
-export SOURCE_DATE_EPOCH=1587696150
+export SOURCE_DATE_EPOCH=1589408715
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -159,3 +152,4 @@ R CMD check --no-manual --no-examples --no-codoc xml2 || :
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/xml2/libs/xml2.so
+/usr/lib64/R/library/xml2/libs/xml2.so.avx2
