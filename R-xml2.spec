@@ -4,7 +4,7 @@
 #
 Name     : R-xml2
 Version  : 1.3.2
-Release  : 77
+Release  : 78
 URL      : https://cran.r-project.org/src/contrib/xml2_1.3.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xml2_1.3.2.tar.gz
 Summary  : Parse XML
@@ -36,10 +36,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589408715
+export SOURCE_DATE_EPOCH=1589510350
 
 %install
-export SOURCE_DATE_EPOCH=1589408715
+export SOURCE_DATE_EPOCH=1589510350
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
