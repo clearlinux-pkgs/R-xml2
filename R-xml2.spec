@@ -4,13 +4,15 @@
 #
 Name     : R-xml2
 Version  : 1.3.2
-Release  : 83
+Release  : 84
 URL      : https://cran.r-project.org/src/contrib/xml2_1.3.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/xml2_1.3.2.tar.gz
 Summary  : Parse XML
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-xml2-lib = %{version}-%{release}
+Requires: R-mockery
+BuildRequires : R-mockery
 BuildRequires : buildreq-R
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : xz-dev
@@ -36,10 +38,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589510350
+export SOURCE_DATE_EPOCH=1620764607
 
 %install
-export SOURCE_DATE_EPOCH=1589510350
+export SOURCE_DATE_EPOCH=1620764607
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -152,4 +154,3 @@ R CMD check --no-manual --no-examples --no-codoc xml2 || :
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/xml2/libs/xml2.so
-/usr/lib64/R/library/xml2/libs/xml2.so.avx2
