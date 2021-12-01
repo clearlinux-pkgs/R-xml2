@@ -2,6 +2,7 @@
 R-Ecfun
 R-RNeXML
 R-bold
+R-htmlTable
 R-kableExtra
 R-languageserver
 R-lintr
@@ -15,4 +16,5 @@ R-spelling
 R-taxize
 R-tidyverse
 R-tm
+R-vdiffr
 R-wikitaxa
