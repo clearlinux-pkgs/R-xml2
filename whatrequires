@@ -3,11 +3,11 @@ R-Ecfun
 R-RNeXML
 R-bold
 R-commonmark
-R-covr
-R-htmlTable
+R-flextable
 R-kableExtra
 R-languageserver
 R-lintr
+R-officer
 R-pkgdown
 R-readODS
 R-roxygen2
@@ -19,5 +19,6 @@ R-spelling
 R-taxize
 R-tidyverse
 R-tm
+R-urlchecker
 R-vdiffr
 R-wikitaxa
