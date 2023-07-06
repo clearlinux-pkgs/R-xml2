@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-xml2
-Version  : 1.3.4
-Release  : 102
-URL      : https://cran.r-project.org/src/contrib/xml2_1.3.4.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/xml2_1.3.4.tar.gz
+Version  : 1.3.5
+Release  : 103
+URL      : https://cran.r-project.org/src/contrib/xml2_1.3.5.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/xml2_1.3.5.tar.gz
 Summary  : Parse XML
 Group    : Development/Tools
 License  : MIT
@@ -34,16 +34,19 @@ lib components for the R-xml2 package.
 
 %prep
 %setup -q -n xml2
+pushd ..
+cp -a xml2 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682611854
+export SOURCE_DATE_EPOCH=1688666669
 
 %install
-export SOURCE_DATE_EPOCH=1682611854
+export SOURCE_DATE_EPOCH=1688666669
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -81,6 +84,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc . || :
 
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
