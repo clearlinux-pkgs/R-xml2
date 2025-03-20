@@ -3,7 +3,10 @@ R-Ecfun
 R-RNeXML
 R-bold
 R-commonmark
+R-eddington
 R-flextable
+R-gridtext
+R-htmlTable
 R-kableExtra
 R-languageserver
 R-lintr
